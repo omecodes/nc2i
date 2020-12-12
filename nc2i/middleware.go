@@ -2,7 +2,6 @@ package nc2i
 
 import (
 	"encoding/json"
-	"github.com/mssola/user_agent"
 	"github.com/omecodes/bome"
 	"github.com/omecodes/common/httpx"
 	"github.com/omecodes/common/utils/log"
@@ -21,8 +20,8 @@ func visits(handler http.Handler) http.Handler {
 		ctx := r.Context()
 		store := visitsInfoStore(ctx)
 		if store != nil {
-			agent := user_agent.New(r.Header.Get("User-Agent"))
-			remoteIP := r.Header.Get("Remote-Address")
+			agent := r.Header.Get("User-Agent")
+			remoteIP := r.Header.Get("Remote-Addr")
 			page := r.URL.Path
 
 			info := map[string]interface{}{
