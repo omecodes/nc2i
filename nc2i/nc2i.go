@@ -73,6 +73,7 @@ func runNC2iServer(cmd *cobra.Command, args []string) {
 	srv := Server{
 		DataDir:         dataDir,
 		ResDir:          resDir,
+		DBUri:           dbURI,
 		BindAddr:        addr,
 		TLSCertFilename: tlsCertFilename,
 		TLSKeyFilename:  tlsKeyFilename,
