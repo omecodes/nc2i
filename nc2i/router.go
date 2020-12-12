@@ -86,7 +86,7 @@ func saveMessage(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	msgStore := messages(ctx)
 
-	date := time.Now().UnixNano() / 1e6
+	date := time.Now().UnixNano()
 
 	err = msgStore.Save(&bome.ListEntry{
 		Index: date,
