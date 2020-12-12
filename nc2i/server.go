@@ -142,7 +142,7 @@ func (srv *Server) Start() error {
 func (srv *Server) getHTTPRouter() http.Handler {
 	router := mux.NewRouter()
 
-	router.PathPrefix(appRoute + "/").Subrouter().
+	router.PathPrefix(appRoute).Subrouter().
 		Name("web-app").
 		Handler(http.StripPrefix(appRoute, srv.middleware(http.HandlerFunc(serveWebApp)))).Methods(http.MethodGet)
 
