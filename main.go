@@ -4,6 +4,7 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/omecodes/nc2i/nc2i"
+	_ "github.com/omecodes/nc2i/statik"
 )
 
 func main() {

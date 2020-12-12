@@ -7,7 +7,7 @@ import (
 )
 
 type ctxMessagesStore struct{}
-type ctxMetricsStore struct{}
+type ctxVisitsInfo struct{}
 type ctxResFS struct{}
 type ctxResDir struct{}
 type ctxDataDir struct{}
@@ -24,12 +24,12 @@ func messages(ctx context.Context) *bome.JSONList {
 	return o.(*bome.JSONList)
 }
 
-func contextWithMetrics(parent context.Context, list *bome.JSONList) context.Context {
-	return context.WithValue(parent, ctxMessagesStore{}, list)
+func contextWithVisitsInfoStore(parent context.Context, list *bome.JSONList) context.Context {
+	return context.WithValue(parent, ctxVisitsInfo{}, list)
 }
 
-func metrics(ctx context.Context) *bome.JSONList {
-	o := ctx.Value(ctxMetricsStore{})
+func visitsInfoStore(ctx context.Context) *bome.JSONList {
+	o := ctx.Value(ctxVisitsInfo{})
 	if o == nil {
 		return nil
 	}

@@ -4,9 +4,12 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"database/sql"
+	"github.com/gorilla/mux"
 	"github.com/omecodes/bome"
 	"github.com/omecodes/common/utils/log"
 	"github.com/omecodes/libome/crypt"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/rakyll/statik/fs"
 	"net"
 	"net/http"
 )
@@ -23,8 +26,9 @@ type Server struct {
 	initialized bool
 	listener    net.Listener
 
-	messages *bome.JSONList
-	visits   *bome.JSONList
+	messages        *bome.JSONList
+	visitsInfoStore *bome.JSONList
+	resFS           http.FileSystem
 
 	Errors chan error
 }
@@ -46,7 +50,12 @@ func (srv *Server) init() error {
 		return err
 	}
 
-	srv.visits, err = bome.NewJSONList(db, bome.MySQL, "visits")
+	srv.visitsInfoStore, err = bome.NewJSONList(db, bome.MySQL, "visits")
+	if err != nil {
+		return err
+	}
+
+	srv.resFS, err = fs.New()
 	if err != nil {
 		return err
 	}
@@ -121,7 +130,7 @@ func (srv *Server) Start() error {
 	}
 
 	go func() {
-		router := getRouter()
+		router := srv.getHTTPRouter()
 		if err := http.Serve(srv.listener, router); err != nil {
 			srv.Errors <- err
 		}
@@ -130,7 +139,47 @@ func (srv *Server) Start() error {
 	return nil
 }
 
+func (srv *Server) getHTTPRouter() http.Handler {
+	router := mux.NewRouter()
+
+	router.PathPrefix(appRoute + "/").Subrouter().
+		Name("web-app").
+		Handler(http.StripPrefix(appRoute, srv.middleware(http.HandlerFunc(serveWebApp)))).Methods(http.MethodGet)
+
+	router.Handle(messagesRoute, srv.middleware(http.HandlerFunc(saveMessage))).Methods(http.MethodPost)
+	router.Handle(metricsRoute, promhttp.Handler())
+	return router
+}
+
+func (srv *Server) updateHttpContext(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		ctx := r.Context()
+		ctx = contextWithDataDir(ctx, srv.DataDir)
+		ctx = contextWithExternalResDir(ctx, srv.ResDir)
+		ctx = contextWithVisitsInfoStore(ctx, srv.visitsInfoStore)
+		ctx = contextWithMessages(ctx, srv.messages)
+		ctx = contextWithResFS(ctx, srv.resFS)
+
+		r = r.WithContext(ctx)
+		handler.ServeHTTP(w, r)
+	})
+}
+
+func (srv *Server) middleware(handler http.Handler) http.Handler {
+
+	wrappers := []middleware{
+		visits,
+		srv.updateHttpContext,
+		logHandler.Handle,
+	}
+
+	for _, m := range wrappers {
+		handler = m(handler)
+	}
+	return handler
+}
+
 // Start stops the web server
 func (srv *Server) Stop() error {
-	return nil
+	return srv.listener.Close()
 }

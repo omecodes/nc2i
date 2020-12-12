@@ -1,11 +1,11 @@
 package nc2i
 
 import (
-	"github.com/gorilla/mux"
+	"fmt"
 	"github.com/omecodes/bome"
 	"github.com/omecodes/common/httpx"
 	"github.com/omecodes/common/utils/log"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"path"
@@ -19,16 +19,6 @@ const (
 	metricsRoute  = "/metrics"
 	messagesRoute = "/messages"
 )
-
-func getRouter() http.Handler {
-	router := mux.NewRouter()
-
-	router.Handle(appRoute, middleware(http.HandlerFunc(serveWebApp))).Methods(http.MethodGet)
-	router.Handle(messagesRoute, middleware(http.HandlerFunc(saveMessage))).Methods(http.MethodPost)
-	router.Handle(metricsRoute, promhttp.Handler())
-
-	return router
-}
 
 func serveWebApp(w http.ResponseWriter, r *http.Request) {
 	filename := strings.TrimPrefix(r.URL.Path, appRoute)
@@ -55,7 +45,22 @@ func serveWebApp(w http.ResponseWriter, r *http.Request) {
 		}
 	}()
 
-	httpx.WriteContent(w, mime, size, content)
+	buf := make([]byte, 2048)
+	done := false
+	w.Header().Set("Content-Length", fmt.Sprintf("%d", size))
+	w.Header().Set("Content-Type", mime)
+
+	for !done {
+		n, err := content.Read(buf)
+		if err != nil {
+			done = err == io.EOF
+			if !done {
+				log.Error("failed to send content", log.Err(err))
+				return
+			}
+		}
+		_, _ = w.Write(buf[:n])
+	}
 }
 
 func saveMessage(w http.ResponseWriter, r *http.Request) {

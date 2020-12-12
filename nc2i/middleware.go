@@ -10,25 +10,23 @@ import (
 	"time"
 )
 
-var logHandler = httpx.Logger("nc2i")
+type middleware func(handler http.Handler) http.Handler
 
-func middleware(final http.Handler) http.Handler {
-	return logHandler.Handle(visits(final))
-}
+var logHandler = httpx.Logger("nc2i")
 
 func visits(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		handler.ServeHTTP(w, r)
-
+		date := time.Now().UnixNano() / 1e6
 		ctx := r.Context()
-		store := metrics(ctx)
+		store := visitsInfoStore(ctx)
 		if store != nil {
 			agent := user_agent.New(r.Header.Get("User-Agent"))
 			remoteIP := r.Header.Get("Remote-Address")
 			page := r.URL.Path
 
 			info := map[string]interface{}{
-				"date":  time.Now().UnixNano() / 1e6,
+				"date":  date,
 				"agent": agent,
 				"ip":    remoteIP,
 				"page":  page,
@@ -37,7 +35,7 @@ func visits(handler http.Handler) http.Handler {
 			data, _ := json.Marshal(info)
 			if data != nil {
 				err := store.Save(&bome.ListEntry{
-					Index: time.Now().UnixNano(),
+					Index: date,
 					Value: string(data),
 				})
 				if err != nil {

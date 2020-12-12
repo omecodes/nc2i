@@ -41,7 +41,7 @@ func getResourceFile(ctx context.Context, filename string) (string, int64, io.Re
 
 func getExternalResourceFile(ctx context.Context, filename string) (string, int64, io.ReadCloser, error) {
 	resDir := externalResDir(ctx)
-	if resDir != "" {
+	if resDir == "" {
 		return "", 0, nil, errors.NotFound
 	}
 
