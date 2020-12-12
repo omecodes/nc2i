@@ -17,7 +17,7 @@ var logHandler = httpx.Logger("nc2i")
 func visits(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		handler.ServeHTTP(w, r)
-		date := time.Now().UnixNano() / 1e6
+		date := time.Now().UnixNano()
 		ctx := r.Context()
 		store := visitsInfoStore(ctx)
 		if store != nil {
