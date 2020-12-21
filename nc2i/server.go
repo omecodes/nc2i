@@ -6,6 +6,7 @@ import (
 	"database/sql"
 	"github.com/gorilla/mux"
 	"github.com/omecodes/bome"
+	"github.com/omecodes/common/httpx"
 	"github.com/omecodes/common/utils/log"
 	"github.com/omecodes/libome/crypt"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -145,7 +146,11 @@ func (srv *Server) getHTTPRouter() http.Handler {
 	router := mux.NewRouter()
 
 	router.Path("/").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, appRoute, 200)
+		httpx.Redirect(w, &httpx.RedirectURL{
+			URL:         appRoute,
+			Code:        http.StatusMovedPermanently,
+			ContentType: "text/html",
+		})
 	})
 	router.PathPrefix(appRoute).Subrouter().
 		Name("web-app").
