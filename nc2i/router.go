@@ -1,10 +1,8 @@
 package nc2i
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/omecodes/bome"
-	"github.com/omecodes/common/httpx"
-	"github.com/omecodes/common/utils/log"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -12,6 +10,11 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/omecodes/bome"
+	"github.com/omecodes/common/httpx"
+	"github.com/omecodes/common/mailer"
+	"github.com/omecodes/common/utils/log"
 )
 
 const (
@@ -95,6 +98,56 @@ func saveMessage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Error("failed to save message", log.Err(err))
 		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	emailData := &EmailData{}
+	err = json.Unmarshal(data, emailData)
+	if err != nil {
+		log.Error("could not parse message content", log.Err(err))
+		return
+	}
+
+	emailData.Year = fmt.Sprintf("%d", time.Now().Year())
+
+	plain, html, err := getEmails(emailData)
+	if err != nil {
+		log.Error("could not load email content:", log.Err(err))
+		return
+	}
+
+	var mailAgent mailer.Mailer
+	mailerDSN := mailerSource(ctx)
+	if mailerDSN == "" {
+		log.Error("could not get mailer configs")
+		return
+	}
+
+	var email = notificationEmail(ctx)
+
+	mailAgent, err = mailer.Parse(mailerDSN)
+	if err != nil {
+		log.Error("could not get mailer configs", log.Err(err))
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	err = mailAgent.Send(&mailer.Email{
+		Subject: "NC2I: Demande de devis",
+		From: mailer.User{
+			Name:  "NC2I - Site",
+			Email: "omecodes@gmail.com",
+		},
+		To: mailer.User{
+			Name:  "Equipe NC2I",
+			Email: email,
+		},
+		Plain: plain,
+		Html:  html,
+		Files: nil,
+	})
+	if err != nil {
+		log.Error("could not get send email:", log.Err(err))
 		return
 	}
 }

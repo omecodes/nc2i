@@ -15,13 +15,15 @@ import (
 )
 
 type Server struct {
-	DataDir         string
-	ResDir          string
-	DBUri           string
-	BindAddr        string
-	TLSCertFilename string
-	TLSKeyFilename  string
-	TLSSelfSigned   bool
+	MailerSourceName string
+	Email            string
+	DataDir          string
+	ResDir           string
+	DBUri            string
+	BindAddr         string
+	TLSCertFilename  string
+	TLSKeyFilename   string
+	TLSSelfSigned    bool
 
 	initialized bool
 	listener    net.Listener
@@ -159,6 +161,8 @@ func (srv *Server) updateHttpContext(handler http.Handler) http.Handler {
 		ctx = contextWithVisitsInfoStore(ctx, srv.visitsInfoStore)
 		ctx = contextWithMessages(ctx, srv.messages)
 		ctx = contextWithResFS(ctx, srv.resFS)
+		ctx = contextWithNotificationEmail(ctx, srv.Email)
+		ctx = contextWithMailerSourceName(ctx, srv.MailerSourceName)
 
 		r = r.WithContext(ctx)
 		handler.ServeHTTP(w, r)

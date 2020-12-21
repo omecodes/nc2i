@@ -2,7 +2,6 @@ package nc2i
 
 import (
 	"fmt"
-	"github.com/omecodes/common/utils/prompt"
 	"os"
 	"path"
 	"path/filepath"
@@ -11,12 +10,15 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/omecodes/common/utils/log"
+	"github.com/omecodes/common/utils/prompt"
 )
 
 var (
 	Cmd                 *cobra.Command
 	addr                string
 	dbURI               string
+	mailerURI           string
+	managerEmail        string
 	externalResourceDir string
 
 	tlsCertFilename string
@@ -55,7 +57,9 @@ func init() {
 
 	flags := Cmd.PersistentFlags()
 	flags.StringVar(&addr, "bind", ":80", "Bind address")
-	flags.StringVar(&dbURI, "db", "nc2i:nc2i@(localhost:3306)/nc2i?charset=utf8", "Database URI (MySQL is highly encouraged for production environment)")
+	flags.StringVar(&dbURI, "db", "", "Database URI (MySQL is highly encouraged for production environment)")
+	flags.StringVar(&mailerURI, "mailer", "", "Mailer source name")
+	flags.StringVar(&managerEmail, "email", "", "Notification email. Or set it in NC2I_MAILER env variable")
 	flags.StringVar(&externalResourceDir, "res", resDir, "External resources folder")
 	flags.StringVar(&tlsCertFilename, "tls-crt", "", "TLS certificate filename")
 	flags.StringVar(&externalResourceDir, "tls-key", "", "TLS key filename")
@@ -70,14 +74,41 @@ func runNC2iServer(cmd *cobra.Command, args []string) {
 		}
 	}
 
+	if mailerURI == "" {
+		mailerURI = os.Getenv("NC2I_MAILER")
+		if mailerURI == "" {
+			fmt.Println("mailer uri is required")
+			_ = cmd.Help()
+			os.Exit(-1)
+		}
+	}
+
+	if managerEmail == "" {
+		managerEmail = os.Getenv("NC2I_MAN_EMAIL")
+		if managerEmail == "" {
+			fmt.Println("manager email is required")
+			_ = cmd.Help()
+			os.Exit(-1)
+		}
+	}
+
+	if os.Getenv("NC2I_DB") != "" {
+		dbURI = os.Getenv("NC2I_DB")
+		if dbURI == "" {
+			dbURI = "bome:bome@(127.0.0.1:3306)/bome?charset=utf8"
+		}
+	}
+
 	srv := Server{
-		DataDir:         dataDir,
-		ResDir:          resDir,
-		DBUri:           dbURI,
-		BindAddr:        addr,
-		TLSCertFilename: tlsCertFilename,
-		TLSKeyFilename:  tlsKeyFilename,
-		TLSSelfSigned:   tlsSelfSigned,
+		MailerSourceName: mailerURI,
+		Email:            managerEmail,
+		DataDir:          dataDir,
+		ResDir:           resDir,
+		DBUri:            dbURI,
+		BindAddr:         addr,
+		TLSCertFilename:  tlsCertFilename,
+		TLSKeyFilename:   tlsKeyFilename,
+		TLSSelfSigned:    tlsSelfSigned,
 	}
 
 	err := srv.Start()
@@ -95,7 +126,6 @@ func runNC2iServer(cmd *cobra.Command, args []string) {
 	// waiting for CTRL+C or server error
 	select {
 	case <-prompt.QuitSignal():
-
 	case err = <-srv.Errors:
 		fmt.Println("NC2I server error: ", err)
 	}
