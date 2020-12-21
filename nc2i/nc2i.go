@@ -6,7 +6,6 @@ import (
 	"path"
 	"path/filepath"
 
-	"github.com/shibukawa/configdir"
 	"github.com/spf13/cobra"
 
 	"github.com/omecodes/common/utils/log"
@@ -30,9 +29,12 @@ var (
 )
 
 func init() {
-	dirs := configdir.New("Ome", "NC2I")
-	globalFolder := dirs.QueryFolders(configdir.Global)[0]
-	dataDir = globalFolder.Path
+	var err error
+	dataDir, err = filepath.Abs("./")
+	if err != nil {
+		fmt.Println("could not resolve working dir")
+		os.Exit(-1)
+	}
 
 	if err := os.MkdirAll(dataDir, os.ModePerm); err != nil {
 		fmt.Println("failed to create NC2I dir:", err)
