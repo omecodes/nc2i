@@ -144,6 +144,9 @@ func (srv *Server) Start() error {
 func (srv *Server) getHTTPRouter() http.Handler {
 	router := mux.NewRouter()
 
+	router.Path("/").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, appRoute, 200)
+	})
 	router.PathPrefix(appRoute).Subrouter().
 		Name("web-app").
 		Handler(http.StripPrefix(appRoute, srv.middleware(http.HandlerFunc(serveWebApp)))).Methods(http.MethodGet)
