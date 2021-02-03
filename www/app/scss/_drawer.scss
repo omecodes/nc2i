@@ -1,0 +1,82 @@
+#drawer {
+
+    >div#click-catcher {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: transparent;
+        .active {
+            background-color: #00000044;
+        }
+        transition: .3s;
+    }
+
+    >div#side-bar {
+        z-index: 2;
+        width: 300px;
+        height: 100%;
+        top: $actionBarHeight;
+        position: absolute;
+        transition: .2s;
+        left: -300px;
+
+        @include device(not-mobile){
+            position: fixed;
+            left: 0;
+        }
+
+        &.active {
+            left: 0px;
+        }
+
+        &> ul li {
+            list-style: none;
+            width: 200px;
+            padding: 24px;
+            margin-bottom: 1px;
+        }
+    }
+
+    >div#content {
+        position: absolute;
+        display: block;
+        top: $actionBarHeight;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        @include device(mobile){
+            left: 0;
+        }
+        @include device(not-mobile){
+            position: fixed;
+            left: 302px;
+        }
+        transition: .2s;
+    }
+
+    &>header {
+        position: fixed;
+        top: 0;
+        height: $actionBarHeight;
+
+        nav {
+            padding: 24px;
+
+            a.logo {
+                margin-top: 8px;
+            }
+        }
+
+        nav>div#toggle-btn {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 32px;
+            @include device(not-mobile){
+                display: none;
+            }
+        }
+    }
+}
