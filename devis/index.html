@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Ome client application">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="Ome">
+
+    <link rel="apple-touch-icon" href="/assets/icons/Icon-192.png">
+    <link rel="stylesheet" href="/devis/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="/script/store.js" type="application/javascript"></script>
+    <script src="/script/dom.js" type="application/javascript"></script>
+    <title>ome</title>
+</head>
+
+<body>
+
+<header class="action-bar flex flex-ai-c flex-jc-sb">
+    <a class="action-bar-item" href="/">
+        <img id="icon" src="/assets/icons/Icon-512.png"/>
+    </a>
+
+    <nav id="menu" class="action-bar-item hide-for-mobile">
+        <a href="/devis" class="button">Obtenir un devis</a>
+    </nav>
+
+    <a id="hamburger" class="action-bar-item hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+</header>
+
+<main class="scrollable">
+    <div></div>
+    <footer class="footer flex flex-ai-c flex-jc-c"><span class="mentions">by Ome - omecodes@gmail.com</span></footer>
+</main>
+
+
+<ul id="dropdown-menu" class="h300">
+    <li><a href="/devis" class="flat-button">Obtenir un devis</a></li>
+    <li><a href="/contact" class="flat-button">Contact</a></li>
+</ul>
+
+
+<main class="scrollable">
+    <div>
+        <p i18n class="title">Nous vous contacterons</p>
+
+        <div id="site-form" class="site-form">
+
+            <div class="input">
+                <input i18n id="label" type="text" placeholder="Votre besoin en quelques mots" class="input"/>
+            </div>
+
+            <div class="text-area">
+                <textarea i18n id="description" placeholder="Vos coordonées pour que l'équire de NC2I vous contacte. ex: numéro de téléphone ou email" class="input"></textarea>
+            </div>
+
+            <br/>
+            <p class="error"></p>
+
+            <div class="actions flex flex-jc-c flex-ai-c">
+                <a i18n id="submit-button" class="button">Envoyer</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="click-catcher"></div>
+
+<script src="/devis/app.js" type="application/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,711 @@
+/* Media Queries */
+.input {
+  position: static;
+  background-color: #f3f3f3;
+  height: 45px;
+  width: 300px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.input > input {
+  height: 45px;
+  width: 300px;
+  background-color: transparent;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: #444444;
+  border: none;
+  outline: none;
+}
+.input:focus {
+  border: none;
+  outline: none;
+}
+.input > *.left-icon {
+  display: inline-block;
+}
+.input > *.right-icon {
+  display: inline-block;
+}
+
+.text-area {
+  position: static;
+  background-color: #f3f3f3;
+  height: 45px;
+  width: 300px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.text-area > textarea {
+  height: 100px;
+  width: 300px;
+  background-color: transparent;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: #444444;
+  border: none;
+  outline: none;
+}
+.text-area:focus {
+  border: none;
+  outline: none;
+}
+.text-area > *.left-icon {
+  display: inline-block;
+}
+.text-area > *.right-icon {
+  display: inline-block;
+}
+
+select {
+  border: none;
+  outline: none;
+}
+
+option {
+  background-color: white;
+  padding: 8px 16px;
+}
+
+button, .button {
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #0175C2;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background-position: center;
+  transition: background 0.4s;
+}
+button:hover, .button:hover {
+  background: #0175C2 radial-gradient(circle, transparent 1%, #0175C2 1%) center/15000%;
+}
+button:active, .button:active {
+  background-color: #90CAF9;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.flat-button {
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  color: #0175C2;
+  border-radius: 4px;
+  background-position: center;
+  transition: background 0.4s;
+}
+.flat-button:hover {
+  font-weight: 500;
+  background: #47a7f510 radial-gradient(circle, transparent 1%, #47a7f510 1%) center/15000%;
+}
+.flat-button:active {
+  background-color: #E3F2FD;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.text-button {
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  border-radius: 4px;
+  background-position: center;
+  transition: background 0.4s;
+}
+.text-button:hover {
+  font-weight: 500;
+}
+.text-button:active {
+  background-color: #E3F2FD;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.small-text-button {
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12px;
+  cursor: pointer;
+  color: #424242;
+  border-radius: 4px;
+  background-position: center;
+  transition: background 0.4s;
+}
+.small-text-button:hover {
+  font-weight: 400;
+}
+.small-text-button:active {
+  background-color: #E3F2FD;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.fab {
+  position: static;
+  display: inline-block;
+  height: 64px;
+  width: 64px;
+  bottom: 16px;
+  right: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #0175C2;
+  padding: 32px;
+  background-position: center;
+  transition: background 0.4s;
+}
+.fab:hover {
+  background: #0175C2 radial-gradient(circle, transparent 1%, #0175C2 1%) center/15000%;
+}
+.fab:active {
+  background-color: #90CAF9;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+* {
+  font-family: avenir, serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "avenir", Courier, monospace;
+  font-weight: 300;
+  line-height: 1.3;
+  overflow: hidden;
+  background-color: white;
+}
+
+a, a:visited, a:hover {
+  text-decoration: none;
+}
+
+.float-l {
+  float: left;
+}
+
+.float-r {
+  float: right;
+}
+
+.flex {
+  display: flex;
+}
+.flex-jc-sb {
+  justify-content: space-between;
+}
+.flex-jc-c {
+  justify-content: center;
+}
+.flex-ai-c {
+  align-items: center;
+}
+.flex-wrap {
+  flex-flow: wrap;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+@media only screen and (max-width: 667px) {
+  .hide-for-mobile {
+    display: none;
+  }
+}
+
+.scrollable {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.w50 {
+  width: 50px;
+}
+
+.w75 {
+  width: 75px;
+}
+
+.w100 {
+  width: 100px;
+}
+
+.w150 {
+  width: 150px;
+}
+
+.w200 {
+  width: 200px;
+}
+
+.w300 {
+  width: 300px;
+}
+
+.w400 {
+  width: 400px;
+}
+
+.h50 {
+  height: 50px;
+}
+
+.h75 {
+  height: 75px;
+}
+
+.h100 {
+  height: 100px;
+}
+
+.h150 {
+  height: 150px;
+}
+
+.h200 {
+  height: 200px;
+}
+
+.h300 {
+  height: 300px;
+}
+
+.h400 {
+  height: 400px;
+}
+
+.h500 {
+  height: 500px;
+}
+
+.h600 {
+  height: 600px;
+}
+
+.h700 {
+  height: 700px;
+}
+
+.h-center {
+  margin: 0 auto;
+}
+
+.v-center {
+  top: 50%;
+  position: absolute;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  overflow-x: hidden;
+}
+
+.almost-v-center {
+  top: 40%;
+  position: absolute;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  overflow-x: hidden;
+}
+
+#action-bar {
+  height: 112px;
+  position: sticky;
+  padding: 16px;
+  z-index: 2;
+  background-color: white;
+  border-bottom: 1px solid #9698a644;
+}
+#action-bar > img#icon {
+  width: 64px;
+  height: 64px;
+}
+@media only screen and (max-width: 667px) {
+  #action-bar > img#icon {
+    margin-left: 16px;
+    display: inline-block;
+  }
+}
+#action-bar > nav#menu {
+  display: inline-block;
+}
+#action-bar > nav#menu > a {
+  font-size: 18px;
+}
+#action-bar > nav#menu > a:not(:last-child) {
+  margin-right: 16px;
+}
+#action-bar > #hamburger {
+  cursor: pointer;
+  display: none;
+  margin-right: 32px;
+}
+@media only screen and (max-width: 667px) {
+  #action-bar > #hamburger {
+    display: inline-block;
+  }
+}
+#action-bar > #hamburger > span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: #2d314d;
+}
+#action-bar > #hamburger > span:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+main {
+  position: absolute;
+  padding-top: 112px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.footer {
+  height: 50px;
+  background-color: #44444411;
+}
+.footer > span {
+  display: inline-block;
+}
+
+.form {
+  width: 300px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transition: left 0.4s;
+}
+.form > .logo {
+  display: inline-block;
+  width: 50px;
+  margin-left: 125px;
+  margin-bottom: 24px;
+}
+.form > .title {
+  text-align: center;
+  font-size: 32px;
+  margin: 0 0 16px;
+}
+.form > .description {
+  text-align: center;
+  font-size: 18px;
+  margin: 0 0 24px;
+}
+.form > .actions {
+  height: 50px;
+  width: 300px;
+  position: static;
+  margin-top: 16px;
+}
+.form > .error {
+  height: 20px;
+  width: 300px;
+  position: static;
+  font-size: 12px;
+  margin-left: 16px;
+  color: #ef5350;
+  font-weight: 500;
+}
+.form > .footer {
+  position: static;
+  height: 18px;
+  width: 300px;
+  margin-top: 32px;
+}
+.form .submit-button {
+  width: 100px;
+  text-align: center;
+}
+.form > a.forgotten-password {
+  text-align: center;
+}
+.form > a.register-button {
+  width: 300px;
+  text-align: center;
+}
+.form-to-left {
+  position: absolute;
+  left: -300px;
+}
+.form-to-right {
+  position: absolute;
+  left: 300px;
+}
+.form-layout {
+  position: relative;
+  width: 300px;
+}
+.form-container {
+  height: 100%;
+  width: 300px;
+}
+
+.card {
+  position: relative;
+  height: 320px;
+  width: 100%;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 2px;
+  border: 1px #f3f3f3 solid;
+}
+.card > div.image {
+  position: absolute;
+  margin: 0;
+  left: 2px;
+  top: 0;
+  right: 2px;
+  bottom: 0;
+  border-radius: 4px;
+}
+.card > div.text {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+}
+.card > div.text > p {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  font-size: 18px;
+  height: 70px;
+  overflow: scroll;
+  transition: height 0.1s;
+  color: white;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, #00000099, #000000ff);
+  box-sizing: border-box;
+  padding: 16px;
+}
+.card > div.text > p > span.title {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.card:hover > div.text > p {
+  height: 320px;
+  align-items: center;
+  overflow: scroll;
+}
+.card:hover > div.actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  padding: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: 2px;
+  row-gap: 2px;
+}
+
+#login-layout {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  transition: background-color 0.2s;
+}
+#login-layout.active {
+  height: 100%;
+  background-color: #424242fe;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+#login-layout.active > .form {
+  display: block;
+  top: 200px;
+  width: 332px;
+  height: 320px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 48px 16px 16px;
+  border-radius: 4px;
+}
+#login-layout.active > .form > p.title {
+  font-size: 32px;
+  color: black;
+}
+#login-layout.active > .form > .button {
+  display: inline-block;
+  width: 300px;
+  text-align: center;
+}
+#login-layout .form {
+  display: none;
+}
+
+#dropdown-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 4;
+  background-color: white;
+  top: -300px;
+  left: 0;
+  right: 0;
+  transition: top 0.2s;
+}
+#dropdown-menu > li {
+  padding: 0;
+}
+#dropdown-menu > li > a {
+  font-size: 32px;
+  width: 400px;
+  margin-top: 32px;
+}
+@media only screen and (min-width: 668px) {
+  #dropdown-menu {
+    display: none;
+  }
+}
+@media only screen and (max-width: 667px) {
+  #dropdown-menu {
+    display: block;
+    background-color: white;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+#dropdown-menu.active {
+  top: 0;
+}
+
+#action-bar {
+  height: 112px;
+  position: sticky;
+  padding: 16px;
+  z-index: 2;
+  background-color: white;
+  border-bottom: 1px solid #9698a644;
+}
+#action-bar > img#icon {
+  width: 64px;
+  height: 64px;
+}
+@media only screen and (max-width: 667px) {
+  #action-bar > img#icon {
+    margin-left: 16px;
+    display: inline-block;
+  }
+}
+#action-bar > nav#menu {
+  display: inline-block;
+}
+@media only screen and (max-width: 667px) {
+  #action-bar > nav#menu {
+    display: none;
+  }
+}
+#action-bar > nav#menu > a {
+  font-size: 18px;
+}
+#action-bar > nav#menu > a:not(:last-child) {
+  margin-right: 16px;
+}
+#action-bar > #hamburger {
+  cursor: pointer;
+  display: none;
+  margin-right: 32px;
+}
+@media only screen and (max-width: 667px) {
+  #action-bar > #hamburger {
+    display: inline-block;
+  }
+}
+#action-bar > #hamburger > span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: #2d314d;
+}
+#action-bar > #hamburger > span:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+main {
+  position: absolute;
+  padding-top: 112px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.footer {
+  height: 50px;
+  background-color: #44444411;
+}
+.footer > span {
+  display: inline-block;
+}
+
+.card {
+  border-radius: 4px;
+}
+
+.fab {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fab > img {
+  width: 40px;
+}
+
+/*# sourceMappingURL=style.css.map */

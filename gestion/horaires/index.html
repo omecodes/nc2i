@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Ome client application">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="Ome">
+
+    <link rel="apple-touch-icon" href="/assets/icons/Icon-192.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="/script/store.js" type="application/javascript"></script>
+    <script src="/script/dom.js" type="application/javascript"></script>
+    <title>ome</title>
+</head>
+
+<body>
+
+
+<header id="action-bar" class="flex flex-ai-c flex-jc-sb">
+    <img id="icon" src="/assets/icons/Icon-192.png"/>
+
+    <nav id="menu" class="hide-for-mobile">
+        <a href="/devis" class="button">Obtenir un devis</a>
+        <a href="/contact" class="flat-button">Contact</a>
+    </nav>
+
+    <a id="hamburger" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+</header>
+
+<main class="scrollable">
+    <div></div>
+    <footer class="footer flex flex-ai-c flex-jc-c"><span class="mentions">by Ome - omecodes@gmail.com</span></footer>
+</main>
+
+
+
+<div id="login-layout">
+
+    <div class="form">
+        <p class="title">Connexion</p>
+
+        <div class="input">
+            <input id="identifier" type="text" placeholder="Identifiant"/>
+        </div>
+
+        <div class="input">
+            <input id="password" type="password" placeholder="Mot de passe"/>
+        </div>
+        <br/>
+
+        <a href="" class="button" id="connect">Se connecter</a>
+    </div>
+</div>
+
+<ul id="dropdown-menu" class="h300">
+    <li><a href="/devis" class="flat-button">Obtenir un devis</a></li>
+    <li><a href="/contact" class="flat-button">Contact</a></li>
+</ul>
+
+<div id="click-catcher"></div>
+
+<script src="/devis/app.js" type="application/javascript"></script>
+<script src="/script/session.js" type="application/javascript"></script>
+
+</body>
+</html>

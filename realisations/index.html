@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Ome client application">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="Ome">
+
+    <link rel="apple-touch-icon" href="/assets/icons/Icon-512.png">
+    <link rel="stylesheet" href="/realisations/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="/script/dom.js" type="application/javascript"></script>
+    <script src="/script/store.js" type="application/javascript"></script>
+    <script src="/script/card.js" type="application/javascript"></script>
+    <title>ome</title>
+</head>
+
+<body>
+
+<header class="action-bar flex flex-ai-c flex-jc-sb">
+
+    <a class="action-bar-item" href="/">
+        <img id="icon" src="/assets/icons/Icon-512.png"/>
+    </a>
+
+    <nav id="menu" class="action-bar-item hide-for-mobile">
+        <a href="/devis" class="button">Obtenir un devis</a>
+    </nav>
+
+    <a id="hamburger" class="action-bar-item hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+
+</header>
+
+<main class="scrollable">
+    <div>
+        <div id="grid" class="grid"></div>
+    </div>
+</main>
+
+<ul id="dropdown-menu" class="h300">
+    <li><a href="/devis" class="flat-button">Obtenir un devis</a></li>
+</ul>
+
+<div id="click-catcher"></div>
+
+<script src="/gestion/realisations/app.js" type="application/javascript"></script>
+
+</body>
+
+</html>

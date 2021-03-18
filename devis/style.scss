@@ -1,0 +1,296 @@
+@import "../style/style";
+
+#click-catcher {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  transition: background-color .2s;
+
+  &.active {
+    height: 100%;
+    background-color: #424242aa;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+#dropdown-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  z-index: 4;
+  background-color: white;
+  top: -300px;
+  left: 0;
+  right: 0;
+  transition: top 0.2s;
+
+  > li {
+    padding: 0;
+    > a {
+      font-size: 32px;
+      width: 400px;
+      margin-top: 32px;
+    }
+  }
+
+  @include device(not-mobile) {
+    display: none;
+  }
+
+  @include device(mobile) {
+    display: block;
+    background-color: white;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &.active {
+    top: 0;
+  }
+}
+
+.action-bar {
+  height: 112px;
+  position: sticky;
+  padding: 16px;
+  z-index: 2;
+  background-color: white;
+  border-bottom: 1px solid #9698a644;
+
+  & > img#icon {
+    width: 64px;
+    height: 64px;
+    @include device(mobile) {
+      margin-left: 16px;
+      display: inline-block;
+    }
+  }
+
+  &-item {
+    display: inline-block;
+
+    & > img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  > nav#menu {
+    display: inline-block;
+
+    @include device(mobile) {
+      display: none;
+    }
+
+    & > a {
+      font-size: 18px;
+    }
+
+    & > a:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  > #hamburger {
+    cursor: pointer;
+    display: none;
+    margin-right: 32px;
+
+    @include device(mobile) {
+      display: inline-block;
+    }
+
+    & > span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background-color: $darkBlue;
+
+      &:not(:last-child) {
+        margin-bottom: 3px;
+      }
+    }
+  }
+}
+
+main {
+  position: absolute;
+  padding-top: 112px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.footer {
+  height: 50px;
+  background-color: #44444411;
+
+  > span {
+    display: inline-block;
+  }
+}
+
+.fab {
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > img {
+    width: 40px;
+  }
+}
+
+.site-form {
+  input, textarea {
+    font-size: 18px;
+  }
+
+  > .input {
+    height: 60px;
+    margin: 16px 0;
+
+    > input {
+      height: 60px;
+    }
+  }
+
+  @include device(mobile) {
+    width: 350px;
+    margin: 0 auto;
+
+    > .input {
+      width: 350px;
+
+      > input {
+        width: 350px;
+      }
+    }
+  }
+
+  @include device(not-mobile) {
+    width: 600px;
+    margin: 0 auto;
+
+    > .input {
+      width: 600px;
+
+      > input {
+        width: 600px;
+      }
+    }
+  }
+
+  > .text-area {
+    height: 150px;
+    margin: 16px 0;
+
+    > textarea {
+      height: 150px;
+      padding: 16px;
+    }
+  }
+
+  @include device(mobile) {
+    width: 350px;
+    margin: 0 auto;
+
+    > .text-area {
+      width: 350px;
+
+      > textarea {
+        width: 350px;
+      }
+    }
+  }
+
+  @include device(not-mobile) {
+    width: 600px;
+    margin: 0 auto;
+
+    > .text-area {
+      width: 600px;
+
+      > textarea {
+        width: 600px;
+      }
+    }
+  }
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 48px;
+}
+
+.file-selector {
+  background-color: $lightGray;
+  border-radius: 4px;
+
+  @include device(mobile) {
+    width: 350px;
+    margin: 0 auto;
+  }
+
+  @include device(not-mobile) {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  & > div.import-button {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    top: -20px;
+
+    & > input {
+      visibility: hidden;
+      z-index: 1;
+      height: 40px;
+      width: 40px;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    & > .fab {
+      position: absolute;
+      z-index: 2;
+      height: 40px;
+      width: 40px;
+      right: 8px;
+      bottom: 8px;
+    }
+  }
+
+  > .input {
+    height: 60px;
+    margin: 16px 0;
+    > input {
+      height: 60px;
+    }
+  }
+}
+
+#publish-button {
+  padding: 16px 64px;
+  display: inline-block;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.footer {
+
+}

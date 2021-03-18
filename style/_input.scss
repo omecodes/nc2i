@@ -1,0 +1,75 @@
+.input {
+  position: static;
+  background-color: $lightGray;
+  height: $input-height;
+  width: $input-width;
+  border-radius: $corner-rad;
+  margin-bottom: 8px;
+
+  & > input {
+    height: $input-height;
+    width: $input-width;
+    background-color: transparent;
+    padding-left: $input-padding;
+    padding-right: $input-padding;
+    color: $input-txt-col;
+    border: none;
+    outline: none;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  & > *.left-icon {
+    display: inline-block;
+  }
+
+  & > *.right-icon {
+    display: inline-block;
+  }
+}
+
+.text-area {
+  position: static;
+  background-color: $lightGray;
+  height: $input-height;
+  width: $input-width;
+  border-radius: $corner-rad;
+  margin-bottom: 8px;
+
+  & > textarea {
+    height: $text-area-height;
+    width: $input-width;
+    background-color: transparent;
+    padding-left: $input-padding;
+    padding-right: $input-padding;
+    color: $input-txt-col;
+    border: none;
+    outline: none;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  & > *.left-icon {
+    display: inline-block;
+  }
+
+  & > *.right-icon {
+    display: inline-block;
+  }
+}
+
+select {
+  border: none;
+  outline: none;
+}
+
+option {
+  background-color: white;
+  padding: 8px 16px;
+}

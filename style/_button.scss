@@ -1,0 +1,123 @@
+
+button, .button {
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: $theme-color;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+
+  background-position: center;
+  transition: background 0.4s;
+
+  &:hover {
+    background: $theme-color radial-gradient(circle, transparent 1%, $theme-color 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: $button-active-bg-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+.flat-button {
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  color: $theme-color;
+  border-radius: 4px;
+
+  background-position: center;
+  transition: background 0.4s;
+
+  &:hover {
+    font-weight: 500;
+    background: $flat-button-bg-color radial-gradient(circle, transparent 1%, $flat-button-bg-color 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: $flat-button-active-bg-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+.text-button {
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  border-radius: 4px;
+
+  background-position: center;
+  transition: background 0.4s;
+
+  &:hover {
+    font-weight: 500;
+  }
+
+  &:active {
+    background-color: $flat-button-active-bg-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+.small-text-button {
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12px;
+  cursor: pointer;
+  color: #424242;
+  border-radius: 4px;
+
+  background-position: center;
+  transition: background 0.4s;
+
+  &:hover {
+    font-weight: 400;
+  }
+
+  &:active {
+    background-color: $flat-button-active-bg-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+.fab {
+  position: static;
+  display: inline-block;
+  height: 64px;
+  width: 64px;
+
+  bottom: 16px;
+  right: 16px;
+
+  border-radius: 50px;
+
+  cursor: pointer;
+  background-color: $theme-color;
+
+  padding: 32px;
+
+  background-position: center;
+  transition: background 0.4s;
+
+  &:hover {
+    background: $theme-color radial-gradient(circle, transparent 1%, $theme-color 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: $button-active-bg-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Chaudronnerie, tuyauterie, charpente métalique, mécanique générale et montage d'usine en Côte d'Ivoire">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="NC2I">
+
+    <link rel="apple-touch-icon" href="/assets/icons/Icon-192.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="/script/store.js" type="application/javascript"></script>
+    <script src="/script/dom.js" type="application/javascript"></script>
+    <title>NC2I Mécanique générale - Côte d'Ivoire</title>
+</head>
+
+<body>
+
+<header class="action-bar flex flex-ai-c flex-jc-sb">
+    <a class="action-bar-item" href="/">
+        <img id="icon" src="/assets/icons/Icon-512.png"/>
+    </a>
+
+    <nav id="menu" class="action-bar-item hide-for-mobile">
+        <a href="/devis" class="button">Obtenir un devis</a>
+        <a href="/realisations" class="flat-button">Réalisations</a>
+        <a href="/#contact-section" class="flat-button">Contact</a>
+    </nav>
+
+    <a id="hamburger" class="action-bar-item hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+</header>
+
+<main class="scrollable">
+    <div>
+        <div class="carousel">
+            <p class="main-sign">NC2I - Nouvelle Côte d'Ivoire Industrie</p>
+            <p class="desc">Mécanique générale - Chaudronnerie - Tuyauterie - Charpente métalique</p>
+            <a href="/devis" class="button">Obtenir un devis</a>
+            <div id="cover" class></div>
+        </div>
+
+        <div class="section">
+            <p class="section-title">Qui sommes-nous?</p>
+
+            <p class="section-description">Nous proposons notre expertise depuis 20 ans</p>
+
+            <div class="section-content flex flex-wrap flex-jc-c">
+                <div class="text">
+                    <span class="title">En Côte d'Ivoire</span>
+                    <p class="content">
+                        Depuis sa création en 1999 la Nouvelle C2I anciennement C2I a participé à la réalisation d'importants projets
+                    </p>
+                    <div class="links"><a href="/gallery?area=local" class="flat-button">En savoir plus...</a></div>
+                </div>
+
+                <div class="text">
+                    <span class="title">Sur le continent</span>
+                    <p class="content">Depuis maintenant ans nous avons étendu notre champs d'action hors de la Côte d'Ivoire notamment au Congo et au Ghana</p>
+                    <div class="links"><a href="/gallery?area=abroad" class="flat-button">En savoir plus...</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact-section" class="section">
+            <p class="section-title">Nous localiser</p>
+
+            <p class="section-description">Yopougon Premier pont - Abidjan, Côte d'Ivoire</p>
+
+            <div class="section-content flex flex-wrap flex-jc-c">
+
+                <img src="/assets/images/map_nc2i.png"  alt="location"/>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer flex flex-ai-c flex-jc-c">
+        <span class="mentions">nc2i.net by Ome - omecodes@gmail.com</span>
+    </footer>
+</main>
+
+
+<ul id="dropdown-menu" class="h300">
+    <li><a href="/devis" class="flat-button">Obtenir un devis</a></li>
+    <li><a href="/realisations" class="flat-button">Réalisations</a></li>
+    <li><a href="/#section-contact" class="flat-button">Contact</a></li>
+</ul>
+
+<div id="click-catcher"></div>
+
+<script src="/app.js" type="application/javascript"></script>
+
+</body>
+</html>

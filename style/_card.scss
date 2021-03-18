@@ -1,0 +1,74 @@
+.card {
+    position: relative;
+    height: 320px;
+    width: 100%;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 2px;
+    border: 1px rgb(243, 243, 243) solid;
+
+    &>div.image {
+        position: absolute;
+        margin: 0;
+        left: 2px;
+        top: 0;
+        right: 2px;
+        bottom: 0;
+        border-radius: 4px;
+    }
+
+    &>div.text {
+        position: absolute;
+        bottom: 0;
+        height: 50px;
+        width: 100%;
+        box-sizing: border-box;
+        color: white;
+
+        &>p {  
+            &>span.title {
+                display: block;
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
+
+            position: absolute;
+            margin: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            font-size: 18px;
+            height: 70px;
+            overflow: scroll;
+            transition: height .1s;
+            color: white;
+            border-radius: 4px;
+            background: linear-gradient(to bottom, #00000099, #000000ff);
+            box-sizing: border-box;
+            padding: 16px;
+        }
+    }
+
+    &:hover {
+        >div.text {
+            &>p {
+                height:320px;
+                align-items: center;
+                overflow: scroll;
+            }
+        }
+
+        &>div.actions {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            padding: 16px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+    }
+}

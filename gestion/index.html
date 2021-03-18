@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Ome client application">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="Ome">
+
+    <link rel="apple-touch-icon" href="/assets/icons/Icon-192.png">
+    <link rel="stylesheet" href="/gestion/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="/script/store.js" type="application/javascript"></script>
+    <script src="/script/dom.js" type="application/javascript"></script>
+    <title>NC2I - Gestion</title>
+</head>
+
+<body>
+
+<header id="action-bar" class="flex flex-ai-c flex-jc-c">
+    <img id="icon" src="/assets/icons/Icon-512.png"/>
+</header>
+
+<main class="scrollable">
+    <div>
+        <p class="title"> Gestion du site </p>
+
+        <div class="topic-grid">
+
+            <a href="/gestion/adresses" class="topic">
+                <img src="/assets/icons/address.png"/>
+                <p>Gerer les adresses</p>
+            </a>
+
+            <a href="/gestion/realisations" class="topic">
+                <img src="/assets/icons/site-worker.png"/>
+                <p>Gerer les chantiers</p>
+            </a>
+
+            <a href="/gestion/contact" class="topic">
+                <img src="/assets/icons/contact-card.png"/>
+                <p>Gerer les informations de contact</p>
+            </a>
+
+            <a href="/gestion/horaires" class="topic">
+                <img src="/assets/icons/time.png"/>
+                <p>Gerer les horaires d'ouverture</p>
+            </a>
+
+        </div>
+    </div>
+</main>
+
+<div id="login-layout">
+
+    <form class="form" method="post" action="/login?continue=%2Fgestion">
+        <p class="title">Connexion</p>
+
+        <div class="input">
+            <input id="username" name="username" type="text" placeholder="Identifiant"/>
+        </div>
+
+        <div class="input">
+            <input id="password" name="password" type="password" placeholder="Mot de passe"/>
+        </div>
+        <br/>
+
+        <input type="submit" href="" class="button" id="connect" value="Se connecter"/>
+    </form>
+</div>
+
+<script src="/gestion/app.js" type="application/javascript"></script>
+<script src="/script/session.js" type="application/javascript"></script>
+</body>
+</html>

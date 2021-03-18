@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Ome client application">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="Ome">
+
+    <link rel="apple-touch-icon" href="/assets/icons/Icon-512.png">
+    <link rel="stylesheet" href="/gestion/realisations/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="/script/dom.js" type="application/javascript"></script>
+    <script src="/script/store.js" type="application/javascript"></script>
+    <script src="/script/card.js" type="application/javascript"></script>
+    <title>ome</title>
+</head>
+
+<body>
+
+<ul id="dropdown-menu" class="h300">
+    <li><a href="/gestion/adresses" class="flat-button">Adresses</a></li>
+    <li><a href="/gestion/contact" class="flat-button">Contact</a></li>
+    <li><a href="/gestion/horaires" class="flat-button">Horaires</a></li>
+</ul>
+
+<div id="click-catcher"></div>
+
+<header id="action-bar" class="flex flex-ai-c flex-jc-sb">
+    <img id="icon" src="/assets/icons/Icon-512.png"/>
+    <nav id="menu" class="hide-for-mobile">
+        <a href="/gestion/adresses" class="flat-button">Adresses</a>
+        <a href="/gestion/contact" class="flat-button">Contact</a>
+        <a href="/gestion/horaires" class="flat-button">Horaires</a>
+    </nav>
+    <a id="hamburger" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+</header>
+
+<main class="scrollable">
+    <div>
+        <p class="title">Listes des réalisations</p>
+        <div id="grid" class="grid"></div>
+
+        <a href="/gestion/realisations/nouveau" class="fab">
+            <img alt="plus" src="/assets/icons/plus.png"/>
+        </a>
+    </div>
+</main>
+
+<div id="login-layout">
+    <form class="form" method="post" action="/login?continue=%2Fgestion">
+        <p class="title">Connexion</p>
+
+        <div class="input">
+            <input id="username" name="username" type="text" placeholder="Identifiant"/>
+        </div>
+
+        <div class="input">
+            <input id="password" name="password" type="password" placeholder="Mot de passe"/>
+        </div>
+        <br/>
+
+        <input type="submit" href="" class="button" id="connect" value="Se connecter"/>
+    </form>
+</div>
+
+<script src="/gestion/realisations/app.js" type="application/javascript"></script>
+<script src="/script/session.js" type="application/javascript"></script>
+</body>
+
+</html>

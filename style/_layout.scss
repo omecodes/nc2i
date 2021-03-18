@@ -1,0 +1,163 @@
+.w50 {
+  width: 50px;
+}
+
+.w75 {
+  width: 75px;
+}
+
+.w100 {
+  width: 100px;
+}
+
+
+.w150 {
+  width: 150px;
+}
+
+.w200 {
+  width: 200px;
+}
+
+.w300 {
+  width: 300px;
+}
+
+.w400 {
+  width: 400px;
+}
+
+.h50 {
+  height: 50px;
+}
+
+.h75 {
+  height: 75px;
+}
+
+.h100 {
+  height: 100px;
+}
+
+
+.h150 {
+  height: 150px;
+}
+
+.h200 {
+  height: 200px;
+}
+
+.h300 {
+  height: 300px;
+}
+
+.h400 {
+  height: 400px;
+}
+
+.h500 {
+  height: 500px;
+}
+
+.h600 {
+  height: 600px;
+}
+
+.h700 {
+  height: 700px;
+}
+
+
+.h-center {
+  margin: 0 auto;
+}
+
+.v-center {
+  top: 50%;
+  position: absolute;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  overflow-x: hidden;
+}
+
+.almost-v-center {
+  top: 40%;
+  position: absolute;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  overflow-x: hidden;
+}
+
+
+#action-bar {
+  height: 112px;
+  position: sticky;
+  padding: 16px;
+  z-index: 2;
+  background-color: white;
+  border-bottom: 1px solid #9698a644;
+
+  & > img#icon {
+    width: 64px;
+    height: 64px;
+
+    @include device(mobile) {
+      margin-left: 16px;
+      display: inline-block;
+    }
+  }
+
+  & > nav#menu {
+    display: inline-block;
+
+    & > a {
+      font-size: 18px;
+    }
+
+    & > a:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  > #hamburger {
+    cursor: pointer;
+    display: none;
+    margin-right: 32px;
+
+    @include device(mobile) {
+      display: inline-block;
+    }
+
+    & > span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background-color: $darkBlue;
+
+      &:not(:last-child) {
+        margin-bottom: 3px;
+      }
+    }
+  }
+}
+
+main {
+  position: absolute;
+  padding-top: 112px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.footer {
+  height: 50px;
+  background-color: #44444411;
+
+  > span {
+    display: inline-block;
+  }
+}

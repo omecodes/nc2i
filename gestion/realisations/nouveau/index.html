@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Ome client application">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="Ome">
+
+    <link rel="apple-touch-icon" href="/assets/icons/Icon-512.png">
+    <link rel="stylesheet" href="/gestion/realisations/nouveau/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+    <script src="/script/dom.js" type="application/javascript"></script>
+    <script src="/script/store.js" type="application/javascript"></script>
+    <script src="/script/message.js" type="application/javascript"></script>
+    <script src="/script/card.js" type="application/javascript"></script>
+    <title>Ajout de réalisations</title>
+</head>
+
+<body>
+
+<header id="action-bar" class="flex flex-ai-c flex-jc-sb">
+    <img id="icon" src="/assets/icons/Icon-512.png"/>
+
+    <nav id="menu">
+        <a href="/gestion/realisations" class="flat-button">Retour aux réalisations</a>
+    </nav>
+</header>
+
+<main class="scrollable">
+    <div>
+        <p i18n class="title">Ajouter une réalisation</p>
+
+        <div id="site-form" class="site-form">
+
+            <div class="input">
+                <input i18n id="label" type="text" placeholder="Intitulé" class="input"/>
+            </div>
+
+            <div class="input">
+                <input i18n id="year" type="number" placeholder="Année" class="input"/>
+            </div>
+
+            <div class="text-area">
+                <textarea i18n id="description" placeholder="Description" class="input"></textarea>
+            </div>
+
+            <div class="file-selector">
+
+                <div class="input">
+                    <input i18n type="text" id="visible-file" placeholder="Ajoutez une image" class="input" readonly/>
+                </div>
+
+                <div class="import-button float-r">
+                    <input id="file" type="file" placeholder="Ajoutez une image" name="file"/>
+                    <div id="fab" class="fab"><img src="/assets/icons/image-plus.png" alt="add"></div>
+                </div>
+
+            </div>
+
+            <br/>
+
+            <p class="error"></p>
+
+            <div class="actions flex flex-jc-c flex-ai-c">
+                <a i18n id="publish-button" class="button">Publier sur le site</a>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<div id="login-layout">
+    <form class="form" method="post" action="/login?continue=%2Fgestion">
+        <p class="title">Connexion</p>
+
+        <div class="input">
+            <input id="username" name="username" type="text" placeholder="Identifiant"/>
+        </div>
+
+        <div class="input">
+            <input id="password" name="password" type="password" placeholder="Mot de passe"/>
+        </div>
+        <br/>
+
+        <input type="submit" class="button" id="connect" value="Se connecter"/>
+    </form>
+</div>
+
+<script src="/gestion/realisations/nouveau/app.js" type="application/javascript"></script>
+<script src="/script/session.js" type="application/javascript"></script>
+
+</body>
+</html>

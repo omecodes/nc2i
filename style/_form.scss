@@ -1,0 +1,90 @@
+.form {
+  width: 300px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+
+  transition: left .4s;
+
+  & > .logo {
+    display: inline-block;
+    width: 50px;
+    margin-left: 125px;
+    margin-bottom: 24px;
+  }
+
+  & > .title {
+    text-align: center;
+    font-size: 32px;
+    margin: 0 0 16px;
+  }
+
+  & > .description {
+    text-align: center;
+    font-size: 18px;
+    margin: 0 0 24px;
+  }
+
+  & > .actions {
+    height: 50px;
+    width: 300px;
+    position: static;
+    margin-top: 16px;
+  }
+
+  & > .error {
+    height: 20px;
+    width: 300px;
+    position: static;
+    font-size: $small-text;
+    margin-left: 16px;
+    color: #ef5350;
+    font-weight: 500;
+  }
+
+  & > .footer {
+    position: static;
+    height: 18px;
+    width: 300px;
+    margin-top: 32px;
+  }
+
+  & .submit-button {
+    width: 100px;
+    text-align: center;
+  }
+
+  & > a.forgotten-password {
+    text-align: center;
+  }
+
+  & > a.register-button {
+    width: 300px;
+    text-align: center;
+  }
+
+  &-to-left {
+    position: absolute;
+    left: -300px;
+  }
+
+  &-to-right {
+    position: absolute;
+    left: 300px;
+  }
+
+
+  &-layout {
+    position: relative;
+    width: 300px;
+  }
+
+  &-container {
+    height: 100%;
+    width: 300px;
+  }
+
+}
